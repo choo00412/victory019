@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Choo SeungRi - Dynamic Academic Portfolio</title>
+    <title>SeungRi Choo - Academic Portfolio</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800&family=Pretendard:wght@400;600;700&display=swap');
 
@@ -24,7 +24,6 @@
         }
 
         body {
-            /* 배경색을 그라데이션으로 변경하여 동적인 느낌 추가 */
             background: linear-gradient(135deg, #f2f9f5 0%, #d8f3dc 100%);
             font-family: 'Pretendard', sans-serif;
             color: var(--main-dark);
@@ -35,7 +34,7 @@
             position: relative;
         }
 
-        /* 🌟 배경 움직이는 버블 애니메이션 CSS */
+        /* 배경 움직이는 버블 애니메이션 CSS */
         .circles {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -43,7 +42,7 @@
         }
         .circles li {
             position: absolute; display: block; list-style: none;
-            background: rgba(45, 106, 79, 0.08); /* 연한 초록색 버블 */
+            background: rgba(45, 106, 79, 0.08); 
             animation: animate 25s linear infinite;
             bottom: -150px; border-radius: 50%;
         }
@@ -62,7 +61,7 @@
         .portfolio-wrapper {
             max-width: 850px;
             width: 100%;
-            z-index: 1; /* 버블보다 위에 표시 */
+            z-index: 1; 
         }
 
         /* 헤더 프로필 섹션 */
@@ -98,75 +97,70 @@
             border-radius: 50px; border: 1.5px solid var(--main-dark); margin-bottom: 12px;
         }
 
-        h1 { font-family: 'Cabinet Grotesk', 'Pretendard', sans-serif; font-size: 38px; font-weight: 800; line-height: 1.2; margin-bottom: 15px; letter-spacing: -0.5px; }
+        h1 { font-family: 'Cabinet Grotesk', 'Pretendard', sans-serif; font-size: 38px; font-weight: 800; line-height: 1.2; margin-bottom: 10px; letter-spacing: -0.5px; }
 
-        .contact-links { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 10px; }
+        .contact-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
         .btn {
-            display: inline-flex; align-items: center; padding: 10px 20px;
-            background: #fff; border: var(--border-style); border-radius: 12px;
-            color: var(--main-dark); text-decoration: none; font-weight: 600; font-size: 14px;
-            box-shadow: 4px 4px 0px var(--main-dark); transition: all 0.2s ease;
+            display: inline-flex; align-items: center; padding: 8px 16px;
+            background: #fff; border: 2px solid var(--main-dark); border-radius: 12px;
+            color: var(--main-dark); text-decoration: none; font-weight: 600; font-size: 13px;
+            box-shadow: 3px 3px 0px var(--main-dark); transition: all 0.2s ease;
         }
-        .btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0px var(--main-dark); background: var(--light-mint); }
-        .btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0px var(--main-dark); }
+        .btn:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0px var(--main-dark); background: var(--light-mint); }
+        .btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0px var(--main-dark); }
         
         .btn-linkedin { background: var(--accent-mint); color: white; }
         .btn-linkedin:hover { background: #40a073; color: white; }
 
-        /* 🌟 스크롤 애니메이션을 위한 섹션 초기 상태 */
+        /* 스크롤 애니메이션 섹션 */
         .section {
             background: var(--card-bg); border: var(--border-style); border-radius: 24px;
             padding: 35px; box-shadow: 8px 8px 0px var(--primary-green); margin-bottom: 35px;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            
-            /* 스크롤 시 나타나도록 투명도 0, 아래로 내려놓음 */
             opacity: 0; transform: translateY(40px); 
         }
 
-        /* 🌟 JS가 이 클래스를 추가하면 섹션이 나타남 */
-        .section.appear {
-            opacity: 1; transform: translateY(0);
-        }
-
+        .section.appear { opacity: 1; transform: translateY(0); }
         .section:hover { transform: translateY(-5px); box-shadow: 12px 12px 0px var(--primary-green); }
 
         h2 { font-size: 22px; font-weight: 700; margin-bottom: 20px; display: inline-block; position: relative; padding-bottom: 5px; }
         h2::after { content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 4px; background: var(--accent-mint); border-radius: 2px; }
 
-        .text-block { font-size: 16px; color: #3d4a41; line-height: 1.7; }
-
         /* 학회 포스터 그리드 디자인 */
-        .poster-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px; }
-        @media (max-width: 768px) { header { flex-direction: column; text-align: center; gap: 20px; } .poster-grid { grid-template-columns: 1fr; } }
-
+        .poster-grid { display: grid; grid-template-columns: 1fr; gap: 25px; margin-top: 15px; }
+        
         .poster-card {
             background: var(--bg-color); border: 2px solid var(--main-dark);
-            border-radius: 16px; padding: 20px; transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 16px; padding: 25px; transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .poster-card:hover { transform: translateY(-5px) scale(1.02); background: #fff; box-shadow: 4px 4px 0px var(--primary-green); }
+        .poster-card:hover { transform: translateY(-5px) scale(1.01); background: #fff; box-shadow: 4px 4px 0px var(--primary-green); }
 
-        .badge { display: inline-block; background: var(--main-dark); color: #fff; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 6px; margin-bottom: 12px; }
-        .poster-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--main-dark); }
-        .poster-authors { font-size: 14px; color: #55665c; margin-bottom: 12px; }
-        .poster-abstract { font-size: 13px; color: #66776e; background: #fff; padding: 12px; border-radius: 10px; border: 1px dashed var(--accent-mint); height: 120px; overflow-y: auto; }
+        .badge { display: inline-block; background: var(--main-dark); color: #fff; font-size: 13px; font-weight: 700; padding: 5px 12px; border-radius: 6px; margin-bottom: 12px; }
+        .poster-title { font-size: 18px; font-weight: 700; margin-bottom: 10px; color: var(--main-dark); line-height: 1.4; }
+        .poster-authors { font-size: 14px; color: #3d4a41; margin-bottom: 15px; font-weight: 600; }
+        .poster-abstract { font-size: 14px; color: #55665c; background: #fff; padding: 15px; border-radius: 10px; border: 1px dashed var(--accent-mint); max-height: 200px; overflow-y: auto; line-height: 1.6; }
+        .poster-pdf { margin-top: 15px; font-size: 13px; font-weight: 600; color: var(--primary-green); text-decoration: underline; display: inline-block; }
 
-        /* 리스트 스타일 */
-        .info-list { list-style: none; }
-        .info-item { border-bottom: 1px solid #e2ece7; padding: 15px 0; display: flex; align-items: flex-start; transition: background 0.2s; }
-        .info-item:hover { background: #f9fdfa; border-radius: 8px; padding-left: 10px; }
-        .info-item:last-child { border-bottom: none; }
-        .info-label { font-weight: 700; width: 140px; flex-shrink: 0; color: var(--primary-green); }
-        .info-value { flex-grow: 1; }
-
-        /* 경력 타임라인 아이템 */
-        .timeline-item { position: relative; padding-left: 25px; margin-bottom: 20px; transition: transform 0.2s; }
+        /* Publication & Experience 스타일 */
+        .pub-item { border-bottom: 1px solid #e2ece7; padding: 20px 0; }
+        .pub-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .pub-title { font-size: 16px; font-weight: 700; color: var(--main-dark); margin-bottom: 8px; line-height: 1.4; }
+        .pub-authors { font-size: 14px; color: #55665c; margin-bottom: 6px; }
+        .pub-journal { font-size: 14px; color: var(--primary-green); font-weight: 600; margin-bottom: 6px; }
+        
+        .timeline-item { position: relative; padding-left: 30px; margin-bottom: 25px; transition: transform 0.2s; }
         .timeline-item:hover { transform: translateX(5px); }
         .timeline-item:last-child { margin-bottom: 0; }
-        .timeline-item::before { content: ''; position: absolute; left: 0; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-mint); border: 2px solid var(--main-dark); }
+        .timeline-item::before { content: ''; position: absolute; left: 0; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent-mint); border: 2px solid var(--main-dark); }
         .timeline-date { font-size: 13px; font-weight: 700; color: var(--primary-green); margin-bottom: 4px; }
-        .timeline-title { font-size: 16px; font-weight: 700; }
+        .timeline-title { font-size: 16px; font-weight: 700; margin-bottom: 3px; }
         .timeline-sub { font-size: 14px; color: #55665c; }
+        .timeline-project { font-size: 13px; color: #66776e; margin-top: 5px; font-style: italic; }
 
+        .research-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .tag-interest { background: #e2ece7; padding: 8px 16px; border-radius: 10px; font-size: 14px; font-weight: 600; border: 1px solid #b5d5c5; color: var(--main-dark); }
+
+        @media (max-width: 768px) { header { flex-direction: column; text-align: center; gap: 20px; } .contact-links { justify-content: center; } }
         @keyframes slideDown { to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
@@ -180,85 +174,114 @@
 
     <header>
         <div class="profile-img-container">
-            <img src="vic1.jpg" alt="Choo SeungRi" class="profile-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <div style="display:none; width:160px; height:160px; border-radius:20px; border:var(--border-style); background:var(--light-mint); align-items:center; justify-content:center; font-weight:700; color:var(--primary-green); text-align:center; padding:10px;">vic1.jpg 자리에<br>사진 표시</div>
+            <img src="vic1.jpg" alt="SeungRi Choo" class="profile-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div style="display:none; width:160px; height:160px; border-radius:20px; border:var(--border-style); background:var(--light-mint); align-items:center; justify-content:center; font-weight:700; color:var(--primary-green); text-align:center; padding:10px;">vic1.jpg</div>
         </div>
         <div class="profile-info">
-            <span class="tag-major">교육학과 (교육측정평가)</span>
-            <h1>Choo SeungRi</h1>
+            <span class="tag-major">Educational Measurement and Evaluation Major</span>
+            <h1>SeungRi Choo</h1>
+            <p style="font-weight: 600; margin-bottom: 5px; color: #2d6a4f;">Master's Student, Dept. of Education, Graduate School, Ewha Womans University</p>
+            <p style="font-size: 14px; color: #55665c;">Advisor: Prof. Yun-Jung Choi</p>
+            
             <div class="contact-links">
-                <a href="mailto:your-email@example.com" class="btn">📧 이메일 보내기</a>
-                <a href="https://www.linkedin.com/in/seungri-%E2%80%8Echoo-660646412?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="btn btn-linkedin">💼 LinkedIn 프로필</a>
+                <a href="mailto:victorychu@ewha.ac.kr" class="btn">📧 Email</a>
+                <a href="https://www.linkedin.com/in/seungri-%E2%80%8Echoo-660646412?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="btn btn-linkedin">💼 LinkedIn</a>
+                <a href="https://myr.ewha.ac.kr/eduarts/index.do" target="_blank" class="btn">🔬 Ewha Educational Data Analysis Lab</a>
             </div>
         </div>
     </header>
 
     <div class="section">
         <h2>Research Interests</h2>
-        <div class="text-block">
-            <p>여기에 본인의 주요 연구 관심 분야 및 세부 전공(교육측정평가 영역 등) 내용을 입력해 주세요. 깔끔하고 명확한 문장으로 연구 방향성을 작성할 수 있습니다.</p>
+        <div class="research-tags">
+            <span class="tag-interest">Teacher Burnout and Efficacy</span>
+            <span class="tag-interest">Scale Development and Psychometric Validation</span>
+            <span class="tag-interest">Text Mining in Educational Evaluation</span>
         </div>
     </div>
 
     <div class="section">
-        <h2>Conference Presentations</h2>
+        <h2>Conference Presentations (Upcoming)</h2>
         <div class="poster-grid">
             <div class="poster-card">
                 <span class="badge">IMPS</span>
-                <div class="poster-title">[IMPS 공식 영문 포스터 제목을 입력하세요]</div>
-                <div class="poster-authors">저자: 저자 정보를 입력하세요 (예: 본인 이름, 공동 저자 등)</div>
+                <div class="poster-title">A Latent Dirichlet Allocation Analysis of Knowledge Tracing Research Trends</div>
+                <div class="poster-authors">Authors: SeungRi Choo, Yun-Jung Choi* (*Corresponding Author)</div>
                 <div class="poster-abstract">
-                    <strong>Abstract</strong><br>
-                    IMPS 학회 발표용 영문 초록(Abstract) 텍스트가 이곳에 들어갑니다. 내용을 자유롭게 채워 넣으세요.
+                    Knowledge Tracing (KT) is a cornerstone of educational data mining, designed to monitor a learner's cognitive state and provide personalized feedback. With the recent surge in research driven by deep learning advancements, it has become essential to systematically categorize the existing literature and explore the intersection between technical innovation and psychometric value.<br><br>
+                    This study conducts a quantitative trend analysis of KT research using Latent Dirichlet Allocation (LDA) topic modeling. The dataset comprises approximately 1,000 core academic articles published in English between 2000 and the present, curated from the Web of Science (WoS) and ERIC databases.<br><br>
+                    To ensure data integrity, a rigorous purification process was employed, including the removal of duplicates across databases and the exclusion of literature outside the educational context. Following text preprocessing, the optimal number of topics is determined based on perplexity and coherence metrics. Furthermore, the study tracks shifts in research paradigms by analyzing changes in topic proportions across intervals of five years, specifically focusing on the transition from early Bayesian approaches to contemporary deep learning models.<br><br>
+                    The findings are expected to visualize the academic evolution of the KT field and provide foundational insights for future researchers seeking to balance computational performance with psychometric validity.
                 </div>
+                <a href="#" class="poster-pdf">Poster PDF: [To be updated]</a>
             </div>
+            
             <div class="poster-card">
                 <span class="badge">ICOLSEI</span>
-                <div class="poster-title">[ICOLSEI 공식 영문 포스터 제목을 입력하세요]</div>
-                <div class="poster-authors">저자: 저자 정보를 입력하세요</div>
+                <div class="poster-title">An Analysis of Secondary School Teachers' Dilemmas in Performance Assessment Grading within the Generative AI Era: Focusing on Student Dependency on AI</div>
+                <div class="poster-authors">Authors: SeungRi Choo, Yun-Jung Choi* (*Corresponding Author)</div>
                 <div class="poster-abstract">
-                    <strong>Abstract</strong><br>
-                    ICOLSEI 학회 발표용 영문 초록(Abstract) 텍스트가 이곳에 들어갑니다. 내용을 자유롭게 채워 넣으세요.
+                    [To be updated]
                 </div>
+                <a href="#" class="poster-pdf">Poster PDF: [To be updated]</a>
             </div>
         </div>
     </div>
 
     <div class="section">
         <h2>Publications</h2>
-        <div class="info-list">
-            <div class="info-item">
-                <div class="info-label">논문 제목</div>
-                <div class="info-value text-block" style="font-weight:600;">[학부 시절 투고 논문 제목을 입력하세요]</div>
-            </div>
-            <div class="info-item">
-                <div class="info-label">학술지 및 발행 연도</div>
-                <div class="info-value text-block">[학술지 이름 및 발행 연도를 입력하세요]</div>
-            </div>
-            <div class="info-item">
-                <div class="info-label">저자 순서</div>
-                <div class="info-value text-block">[저자 순서 정보를 입력하세요]</div>
-            </div>
+        <div class="pub-item">
+            <div class="pub-title">A Study on the Competency and Needs of Teachers for the Operation of the High School Credit System: Focusing on High Schools in Chungcheongnam Province</div>
+            <div class="pub-authors">Authors: SeungRi Choo, Ji Soo Ahn, Seo Hyeon Lee, Eun Kyung Kim</div>
+            <div class="pub-journal">Peer-Reviewed Journal: Korean Journal of Teacher Education, Vol. 38, No. 5, pp. 201-222 (2022)</div>
+            <a href="https://doi.org/10.14333/KJTE.2022.38.5.10" target="_blank" style="font-size: 13px; color: var(--primary-green); text-decoration: underline;">https://doi.org/10.14333/KJTE.2022.38.5.10</a>
         </div>
     </div>
 
     <div class="section">
-        <h2>Experience & Affiliations</h2>
-        <div style="display: flex; flex-direction: column; gap: 20px; margin-top: 10px;">
+        <h2>Experience</h2>
+        
+        <h3 style="font-size: 18px; margin-bottom: 15px; color: var(--main-dark);">Teaching Experience</h3>
+        <div style="margin-bottom: 30px;">
             <div class="timeline-item">
-                <div class="timeline-date">2025년 3월 ~ 현재</div>
-                <div class="timeline-title">이화여자대학교 대학원 교육학과</div>
-                <div class="timeline-sub">Educational Measurement and Evaluation Lab</div>
+                <div class="timeline-date">Mar. 2026 – Present</div>
+                <div class="timeline-title">Part-time Instructor (Education)</div>
+                <div class="timeline-sub">Nuwon High School</div>
             </div>
+        </div>
+
+        <h3 style="font-size: 18px; margin-bottom: 15px; color: var(--main-dark);">Research Experience</h3>
+        <div>
             <div class="timeline-item">
-                <div class="timeline-date">2024.03 ~ 2024.08</div>
-                <div class="timeline-title">한국교육과정평가원 (KICE)</div>
-                <div class="timeline-sub">[수행하신 직함 또는 역할을 입력하세요]</div>
+                <div class="timeline-date">Mar. 2025 – Present</div>
+                <div class="timeline-title">Graduate Research Assistant</div>
+                <div class="timeline-sub">Ewha Educational Data Analysis Lab, Ewha Womans University</div>
             </div>
+            
             <div class="timeline-item">
-                <div class="timeline-date">[출강 기간 입력]</div>
-                <div class="timeline-title">[고등학교 이름] 강사</div>
-                <div class="timeline-sub">담당 과목: 교육학</div>
+                <div class="timeline-date">Aug. 2025 – Nov. 2025</div>
+                <div class="timeline-title">Graduate Research Assistant</div>
+                <div class="timeline-sub">Office of Academic Affairs, Ewha Womans University</div>
+                <div class="timeline-project">Project: A Study on the Improvement of the Course Evaluation System at Ewha Womans University</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Jul. 2025 – Dec. 2025</div>
+                <div class="timeline-title">Graduate Research Assistant</div>
+                <div class="timeline-sub">Institute for Future Education Research, Ewha Womans University</div>
+                <div class="timeline-project">Project: Secondary School AI Ethics (Funded External Project on Knowledge Tracing)</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Oct. 2024 – Dec. 2024</div>
+                <div class="timeline-title">Research Assistant</div>
+                <div class="timeline-sub">High School Credit System Support Center, Division of Classroom Evaluation Innovation, Korea Institute for Curriculum and Evaluation (KICE)</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Apr. 2024 – Sep. 2024</div>
+                <div class="timeline-title">Research Intern</div>
+                <div class="timeline-sub">Educational Data Center, Office of Planning and Coordination, Korea Institute for Curriculum and Evaluation (KICE)</div>
             </div>
         </div>
     </div>
@@ -271,16 +294,13 @@
         
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                // 화면에 섹션이 보이면 'appear' 클래스 추가하여 애니메이션 실행
                 if (entry.isIntersecting) {
                     entry.target.classList.add('appear');
-                    // 한 번 나타난 후에는 계속 보이게 하려면 아래 줄 주석 해제 (원하시면)
-                    // observer.unobserve(entry.target); 
                 }
             });
         }, { 
-            threshold: 0.1, // 섹션이 10% 이상 화면에 들어오면 실행
-            rootMargin: "0px 0px -50px 0px" // 살짝 아래에서부터 나타나게 조정
+            threshold: 0.1, 
+            rootMargin: "0px 0px -50px 0px"
         });
 
         sections.forEach(section => {
