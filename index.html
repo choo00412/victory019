@@ -6,29 +6,19 @@
     <title>SeungRi Choo - Academic Portfolio</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Cabinet```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SeungRi Choo - Academic Portfolio</title>
-    <style>
-        @import url('[https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap](https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap)');
-        @import url('[https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800&display=swap](https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800&display=swap)');
+        @import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800&display=swap');
 
         :root {
-            /* Clean & Professional Emerald Palette */
+            /* Ewha Green Palette (Pantone 336 C) */
             --bg-body: #fbfdfc;
-            --main-dark: #122a1f; /* Near-black emerald */
-            --primary-emerald: #15803d; /* Professional emerald */
-            --light-mint: #ecfdf5; /* Subtle background mint */
+            --main-dark: #11221b; 
+            --primary-ewha: #00462A; /* 이화그린 찐 컬러 */
+            --light-ewha: #e8eeeA; /* 아주 연한 이화그린 배경용 */
             --card-bg: #ffffff;
             
             /* Clean Design Metrics */
-            --border-color: #e2e8f0; /* Light gray border */
-            --border-radius-clean: 4px; /* Reduced rounding for precise look */
-            --spacing-standard: 20px;
+            --border-color: #e2e8f0;
+            --border-radius-clean: 4px;
             --box-shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.03);
             --box-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.06);
         }
@@ -54,7 +44,7 @@
             width: 100%;
         }
 
-        /* 1. SECTION COMPONENT: Clean, minimalist, subtle shadow */
+        /* 1. SECTION COMPONENT */
         .section {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -69,7 +59,7 @@
             box-shadow: var(--box-shadow-hover);
         }
 
-        /* 2. HEADER COMPONENT: Preserving content, streamlining design */
+        /* 2. HEADER COMPONENT */
         header {
             display: flex;
             align-items: center;
@@ -87,7 +77,7 @@
         .profile-img {
             width: 170px;
             height: 170px;
-            border-radius: 4px; /* Reduced rounding */
+            border-radius: 4px; 
             border: 2px solid var(--border-color);
             object-fit: cover;
             display: block;
@@ -95,17 +85,17 @@
         }
         
         header:hover .profile-img {
-            border-color: var(--primary-emerald);
+            border-color: var(--primary-ewha);
         }
 
         .profile-info { flex-grow: 1; }
         .tag-major {
             display: inline-block;
-            color: var(--primary-emerald);
+            color: var(--primary-ewha);
             font-weight: 600;
             font-size: 14px;
             margin-bottom: 8px;
-            border-bottom: 2px solid var(--light-mint);
+            border-bottom: 2px solid var(--light-ewha);
         }
 
         h1 {
@@ -140,7 +130,7 @@
             padding: 10px 20px;
             background: #fff;
             border: 1px solid var(--border-color);
-            border-radius: 4px; /* Consistent sharp look */
+            border-radius: 4px;
             color: var(--main-dark);
             text-decoration: none;
             font-weight: 600;
@@ -149,13 +139,13 @@
         }
         
         .btn:hover {
-            border-color: var(--primary-emerald);
-            background-color: var(--light-mint);
-            color: var(--primary-emerald);
+            border-color: var(--primary-ewha);
+            background-color: var(--light-ewha);
+            color: var(--primary-ewha);
             transform: translateY(-2px);
         }
 
-        /* 3. TYPOGRAPHY & LAYOUT UTILITIES */
+        /* 3. TYPOGRAPHY & LAYOUT */
         h2 {
             font-size: 24px;
             font-weight: 700;
@@ -174,10 +164,8 @@
             bottom: -1px;
             width: 60px;
             height: 2px;
-            background: var(--primary-emerald);
+            background: var(--primary-ewha);
         }
-
-        .text-block p { font-size: 16px; color: #334155; line-height: 1.7; margin-bottom: 15px; }
 
         /* 학회 포스터 그리드 디자인 */
         .poster-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
@@ -198,8 +186,8 @@
         .badge-container { display: flex; gap: 8px; margin-bottom: 15px; }
         .badge {
             display: inline-block;
-            background: var(--light-mint);
-            color: var(--primary-emerald);
+            background: var(--light-ewha);
+            color: var(--primary-ewha);
             font-size: 13px;
             font-weight: 700;
             padding: 6px 14px;
@@ -224,7 +212,7 @@
         .poster-pdf {
             font-size: 14px;
             font-weight: 600;
-            color: var(--primary-emerald);
+            color: var(--primary-ewha);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
@@ -237,11 +225,10 @@
         
         .pub-title { font-size: 18px; font-weight: 700; color: var(--main-dark); margin-bottom: 10px; line-height: 1.4; }
         .pub-authors { font-size: 15px; color: #475569; margin-bottom: 8px; }
-        .pub-journal { font-size: 14px; color: var(--primary-emerald); font-weight: 600; margin-bottom: 8px; }
+        .pub-journal { font-size: 14px; color: var(--primary-ewha); font-weight: 600; margin-bottom: 8px; }
         .pub-link { font-size: 14px; color: #64748b; text-decoration: none; }
-        .pub-link:hover { color: var(--primary-emerald); text-decoration: underline; }
+        .pub-link:hover { color: var(--primary-ewha); text-decoration: underline; }
         
-        /* Subtitle formatting within experience */
         h3.experience-type { font-size: 18px; font-weight: 700; color: #334155; margin: 30px 0 20px 0; }
         h3.experience-type:first-of-type { margin-top: 0; }
 
@@ -251,12 +238,11 @@
         .timeline-date {
             font-size: 14px;
             font-weight: 700;
-            color: var(--primary-emerald);
+            color: var(--primary-ewha);
             text-align: right;
             padding-top: 2px;
         }
         
-        .timeline-content {}
         .timeline-title { font-size: 16px; font-weight: 700; margin-bottom: 5px; color: var(--main-dark); }
         .timeline-sub { font-size: 14px; color: #475569; margin-bottom: 5px; }
         .timeline-project { font-size: 13px; color: #64748b; margin-top: 8px; font-style: italic; background: #f8fafc; padding: 6px 12px; border-radius: 4px; border-left: 3px solid #cbd5e1; }
@@ -272,7 +258,7 @@
             color: #334155;
             transition: all 0.2s ease;
         }
-        .tag-interest:hover { border-color: var(--primary-emerald); color: var(--primary-emerald); background-color: var(--light-mint); }
+        .tag-interest:hover { border-color: var(--primary-ewha); color: var(--primary-ewha); background-color: var(--light-ewha); }
 
         @media (max-width: 768px) {
             header { flex-direction: column; text-align: center; gap: 20px; padding-bottom: 30px; }
@@ -300,8 +286,8 @@
 
     <header>
         <div class="profile-img-container">
-            <img src="vic1.jpg" alt="SeungRi Choo" class="profile-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <div style="display:none; width:170px; height:170px; border-radius:4px; border:2px solid var(--border-color); background:var(--light-mint); align-items:center; justify-content:center; font-weight:700; color:var(--primary-emerald); text-align:center; padding:10px;">vic1.jpg</div>
+            <img src="vic.jpg" alt="SeungRi Choo" class="profile-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div style="display:none; width:170px; height:170px; border-radius:4px; border:2px solid var(--border-color); background:var(--light-ewha); align-items:center; justify-content:center; font-weight:700; color:var(--primary-ewha); text-align:center; padding:10px;">vic.jpg</div>
         </div>
         <div class="profile-info">
             <span class="tag-major">Educational Measurement and Evaluation Major</span>
@@ -313,8 +299,8 @@
             
             <div class="contact-links">
                 <a href="mailto:victorychu@ewha.ac.kr" class="btn">📧 victorychu@ewha.ac.kr</a>
-                <a href="[https://www.linkedin.com/in/seungri-%E2%80%8Echoo-660646412?utm_source=share_via&utm_content=profile&utm_medium=member_android](https://www.linkedin.com/in/seungri-%E2%80%8Echoo-660646412?utm_source=share_via&utm_content=profile&utm_medium=member_android)" target="_blank" class="btn btn-linkedin">💼 LinkedIn</a>
-                <a href="[https://myr.ewha.ac.kr/eduarts/index.do](https://myr.ewha.ac.kr/eduarts/index.do)" target="_blank" class="btn">🔬 Ewha Educational Data Analysis Lab</a>
+                <a href="https://www.linkedin.com/in/seungri-%E2%80%8Echoo-660646412?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="btn btn-linkedin">💼 LinkedIn</a>
+                <a href="https://myr.ewha.ac.kr/eduarts/index.do" target="_blank" class="btn">🔬 Ewha Educational Data Analysis Lab</a>
             </div>
         </div>
     </header>
@@ -362,7 +348,7 @@
             <div class="pub-title">A Study on the Competency and Needs of Teachers for the Operation of the High School Credit System: Focusing on High Schools in Chungcheongnam Province</div>
             <div class="pub-authors">Authors: <strong>SeungRi Choo</strong>, Ji Soo Ahn, Seo Hyeon Lee, Eun Kyung Kim</div>
             <div class="pub-journal">Korean Journal of Teacher Education, Vol. 38, No. 5, pp. 201-222 (2022)</div>
-            <a href="[https://doi.org/10.14333/KJTE.2022.38.5.10](https://doi.org/10.14333/KJTE.2022.38.5.10)" target="_blank" class="pub-link">DOI: [https://doi.org/10.14333/KJTE.2022.38.5.10](https://doi.org/10.14333/KJTE.2022.38.5.10)</a>
+            <a href="https://doi.org/10.14333/KJTE.2022.38.5.10" target="_blank" class="pub-link">DOI: https://doi.org/10.14333/KJTE.2022.38.5.10</a>
         </div>
     </div>
 
