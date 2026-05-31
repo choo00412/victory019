@@ -43,7 +43,7 @@
             overflow-x: hidden;
         }
 
-        /* 🌟 스플래시(인트로) 애니메이션 - 완벽 통합 버전 */
+        /* 🌟 스플래시(인트로) 애니메이션 */
         .splash-screen {
             position: fixed;
             top: 0;
@@ -53,29 +53,29 @@
             background-color: var(--bg-body);
             z-index: 9999;
             display: flex;
-            align-items: center; /* 세로 가운데 정렬 */
-            justify-content: center; /* 가로 가운데 정렬 */
+            align-items: center; 
+            justify-content: center; 
             animation: fadeOutSplash 3.2s cubic-bezier(0.8, 0, 0.2, 1) forwards;
             pointer-events: none;
         }
 
-        /* 📌 텍스트/이미지를 왼쪽 정렬로 묶어주는 래퍼 */
         .splash-content {
             display: flex;
             flex-direction: column;
-            align-items: flex-start; /* ⬅️ 핵심: 왼쪽 정렬 */
+            align-items: flex-start; /* 왼쪽 정렬 */
             width: 100%;
             max-width: 500px;
-            padding: 0 30px; /* 모바일 좌우 여백 */
+            padding: 0 30px; 
         }
 
+        /* 📌 피드백 반영: 스플래시 사진 크기 확대 (240px -> 280px) */
         .splash-img {
-            width: 240px;
-            height: 240px;
+            width: 280px;
+            height: 280px;
             border-radius: 16px; 
             box-shadow: 0 20px 40px rgba(0, 70, 42, 0.12);
             object-fit: cover;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             opacity: 0;
             animation: fadeInImg 0.8s cubic-bezier(0.34, 1.3, 0.64, 1) 0.2s forwards;
         }
@@ -97,7 +97,6 @@
             color: var(--main-dark);
             letter-spacing: -1px;
             white-space: nowrap;
-            /* 왼 -> 오 마스크 효과 */
             clip-path: inset(0 100% 0 0); 
             transform: translateX(-15px); 
             opacity: 0;
@@ -113,11 +112,11 @@
             animation: slideUpText 0.6s ease forwards 1.2s;
         }
 
-        /* 모바일 스플래시 대응 */
+        /* 모바일 스플래시 대응 (사진 크기 더욱 확대 55vw -> 65vw) */
         @media (max-width: 768px) {
             .splash-img {
-                width: 55vw;
-                height: 55vw;
+                width: 65vw;
+                height: 65vw;
                 border-radius: 12px;
             }
             .splash-name { font-size: 12vw; }
@@ -155,7 +154,6 @@
             max-width: 900px;
             width: 100%;
             opacity: 0;
-            /* 스플래시 끝난 후 등장 */
             animation: revealMain 1s ease forwards 2.7s; 
         }
 
@@ -361,19 +359,36 @@
             background-color: var(--light-ewha); transform: translateY(-2px);
         }
 
+        /* 📌 피드백 반영: 모바일 뷰에서도 모두 왼쪽 정렬 & 버튼 가독성 개선 */
         @media (max-width: 768px) {
-            header { flex-direction: column; text-align: center; gap: 20px; padding-bottom: 30px; }
+            /* 헤더 왼쪽 정렬 통일 */
+            header { 
+                flex-direction: column; 
+                align-items: flex-start; /* 가운데 -> 왼쪽 정렬 */
+                text-align: left; 
+                gap: 20px; 
+                padding-bottom: 30px; 
+            }
             .timeline-grid { grid-template-columns: 1fr; gap: 5px; }
             .timeline-date { text-align: left; margin-bottom: 5px; color: var(--primary-ewha); }
-            .contact-links { justify-content: center; }
-            .badge-container { justify-content: center; }
+            
+            /* 버튼들이 모바일에서 지저분하게 줄바꿈되지 않도록 세로 나열 */
+            .contact-links { 
+                flex-direction: column; 
+                align-items: flex-start; /* 왼쪽 정렬 */
+                justify-content: flex-start; 
+                width: 100%;
+                gap: 10px;
+            }
+            
+            .badge-container { justify-content: flex-start; }
             .section { padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
 
-<!-- 📌 수정된 스플래시 인트로 화면 (왼쪽 정렬 & 소속 추가) -->
+<!-- 스플래시 인트로 화면 -->
 <div class="splash-screen">
     <div class="splash-content">
         <img src="vic1.jpg" alt="SeungRi Choo" class="splash-img" onerror="this.style.display='none';">
@@ -398,9 +413,10 @@
                 <p class="advisor">Advisor: Prof. Yun-Jung Choi</p>
             </div>
             
+            <!-- 📌 피드백 반영: LinkedIn을 첫 번째로 이동 -->
             <div class="contact-links">
-                <a href="mailto:victorychu@ewha.ac.kr" class="btn">📧 victorychu@ewha.ac.kr</a>
                 <a href="https://www.linkedin.com/in/seungri-%E2%80%8Echoo-660646412?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="btn btn-linkedin">💼 LinkedIn</a>
+                <a href="mailto:victorychu@ewha.ac.kr" class="btn">📧 victorychu@ewha.ac.kr</a>
                 <a href="https://myr.ewha.ac.kr/eduarts/index.do" target="_blank" class="btn">🔬 Ewha Educational Data Analysis Lab</a>
             </div>
         </div>
