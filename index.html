@@ -301,7 +301,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* 🌟 스플래시(인트로) 애니메이션 */
+        /* 🌟 스플래시(인트로) 애니메이션 - 수정 버전 */
         .splash-screen {
             position: fixed;
             top: 0;
@@ -314,21 +314,21 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            /* 2.5초 후 자연스럽게 사라짐 */
-            animation: fadeOutSplash 2.5s cubic-bezier(0.8, 0, 0.2, 1) forwards;
-            pointer-events: none; /* 애니메이션 후 클릭 방해 방지 */
+            animation: fadeOutSplash 2.6s cubic-bezier(0.8, 0, 0.2, 1) forwards;
+            pointer-events: none;
         }
 
         .splash-img {
-            width: 250px;
-            height: 250px;
-            border-radius: 6px;
-            border: 4px solid var(--ewha-medium);
+            width: 240px;
+            height: 240px;
+            border-radius: 16px; /* 모서리를 부드럽게 두어 트렌디한 느낌 */
+            border: none; /* 피드백 반영: 테두리 제거 */
+            box-shadow: 0 20px 40px rgba(0, 70, 42, 0.12); /* 이화그린 톤의 은은하고 깊은 그림자 */
             object-fit: cover;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             opacity: 0;
-            /* 사진이 커지면서 등장 */
-            animation: scaleUpImg 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s forwards;
+            /* 부드럽게 선명해지며 등장 */
+            animation: fadeInImg 0.9s cubic-bezier(0.34, 1.3, 0.64, 1) 0.2s forwards;
         }
 
         .splash-name {
@@ -336,46 +336,65 @@
             font-size: 55px;
             font-weight: 800;
             color: var(--main-dark);
-            opacity: 0;
             letter-spacing: -1px;
-            /* 텍스트가 아래서 위로 올라오며 등장 */
-            animation: slideUpText 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.6s forwards;
+            white-space: nowrap;
+            
+            /* 피드백 반영: 왼 -> 오로 생겨나는 효과를 위한 마스크 설정 */
+            clip-path: inset(0 100% 0 0); 
+            transform: translateX(-15px); /* 약간 왼쪽에서 시작 */
+            opacity: 0;
+            animation: revealTextLeftToRight 1.2s cubic-bezier(0.25, 1, 0.5, 1) 0.6s forwards;
         }
 
-        /* 모바일 환경 스플래시 화면 대응 */
+        /* 모바일 환경 대응 */
         @media (max-width: 768px) {
             .splash-img {
                 width: 55vw;
                 height: 55vw;
+                border-radius: 12px;
             }
             .splash-name {
-                font-size: 13vw;
+                font-size: 12vw;
             }
         }
 
-        /* 🌟 본문 지연 등장 (기존 .portfolio-wrapper 에 덮어쓰기) */
+        /* 본문 지연 등장 (인트로가 끝날 때 흐름 연결) */
         .portfolio-wrapper {
             max-width: 900px;
             width: 100%;
             opacity: 0;
-            /* 스플래시가 끝날 쯤(2.1초 후) 본문이 서서히 나타남 */
-            animation: revealMain 1s ease forwards 2.1s; 
+            animation: revealMain 1s ease forwards 2.2s; 
         }
 
-        /* 스플래시 키프레임 */
-        @keyframes scaleUpImg {
-            0% { transform: scale(0.8); opacity: 0; }
+        /* 🌟 애니메이션 키프레임 */
+        @keyframes fadeInImg {
+            0% { transform: scale(0.96); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
         }
-        @keyframes slideUpText {
-            0% { transform: translateY(20px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
+
+        /* 왼 -> 오 슬라이드 와이프 효과 */
+        @keyframes revealTextLeftToRight {
+            0% {
+                opacity: 0;
+                transform: translateX(-15px);
+                clip-path: inset(0 100% 0 0); /* 오른쪽을 100% 가림 */
+            }
+            40% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+                clip-path: inset(0 0 0 0); /* 완전히 다 보임 */
+            }
         }
+
         @keyframes fadeOutSplash {
             0% { opacity: 1; visibility: visible; }
-            80% { opacity: 1; visibility: visible; }
+            85% { opacity: 1; visibility: visible; }
             100% { opacity: 0; visibility: hidden; }
         }
+
         @keyframes revealMain {
             0% { opacity: 0; }
             100% { opacity: 1; }
