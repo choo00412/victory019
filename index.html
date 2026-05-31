@@ -68,7 +68,6 @@
             padding: 0 30px; 
         }
 
-        /* 📌 피드백 반영: 스플래시 사진 크기 확대 (240px -> 280px) */
         .splash-img {
             width: 280px;
             height: 280px;
@@ -112,7 +111,6 @@
             animation: slideUpText 0.6s ease forwards 1.2s;
         }
 
-        /* 모바일 스플래시 대응 (사진 크기 더욱 확대 55vw -> 65vw) */
         @media (max-width: 768px) {
             .splash-img {
                 width: 65vw;
@@ -194,7 +192,8 @@
         
         header:hover .profile-img { border-color: var(--primary-ewha); }
 
-        .profile-info { flex-grow: 1; }
+        .profile-info { flex-grow: 1; width: 100%; }
+        
         .tag-major {
             display: inline-block;
             color: var(--ewha-medium);
@@ -218,7 +217,15 @@
         .academic-info .affiliation { font-size: 18px; font-weight: 700; color: var(--primary-ewha); }
         .academic-info .advisor { font-size: 15px; color: var(--ewha-medium); font-weight: 500; }
 
-        .contact-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 15px; }
+        /* 📌 피드백 반영: 연락처 버튼 영역에 구분선과 여백 추가 */
+        .contact-links { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 12px; 
+            margin-top: 20px; 
+            padding-top: 20px; /* 구분선과 버튼 사이 간격 */
+            border-top: 1px solid var(--border-color); /* 부드러운 회색 구분선 추가 */
+        }
         
         .btn {
             display: inline-flex;
@@ -359,12 +366,10 @@
             background-color: var(--light-ewha); transform: translateY(-2px);
         }
 
-        /* 📌 피드백 반영: 모바일 뷰에서도 모두 왼쪽 정렬 & 버튼 가독성 개선 */
         @media (max-width: 768px) {
-            /* 헤더 왼쪽 정렬 통일 */
             header { 
                 flex-direction: column; 
-                align-items: flex-start; /* 가운데 -> 왼쪽 정렬 */
+                align-items: flex-start; 
                 text-align: left; 
                 gap: 20px; 
                 padding-bottom: 30px; 
@@ -372,10 +377,9 @@
             .timeline-grid { grid-template-columns: 1fr; gap: 5px; }
             .timeline-date { text-align: left; margin-bottom: 5px; color: var(--primary-ewha); }
             
-            /* 버튼들이 모바일에서 지저분하게 줄바꿈되지 않도록 세로 나열 */
             .contact-links { 
                 flex-direction: column; 
-                align-items: flex-start; /* 왼쪽 정렬 */
+                align-items: flex-start; 
                 justify-content: flex-start; 
                 width: 100%;
                 gap: 10px;
@@ -413,7 +417,6 @@
                 <p class="advisor">Advisor: Prof. Yun-Jung Choi</p>
             </div>
             
-            <!-- 📌 피드백 반영: LinkedIn을 첫 번째로 이동 -->
             <div class="contact-links">
                 <a href="https://www.linkedin.com/in/seungri-%E2%80%8Echoo-660646412?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="btn btn-linkedin">💼 LinkedIn</a>
                 <a href="mailto:victorychu@ewha.ac.kr" class="btn">📧 victorychu@ewha.ac.kr</a>
