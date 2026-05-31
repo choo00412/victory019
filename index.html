@@ -9,14 +9,14 @@
         @import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@800&display=swap');
 
         :root {
-            /* 🌿 Ewha Green Palette - 다양한 톤으로 확장 */
-            --bg-body: #f4f8f6; /* 아주 연한 초록빛이 감도는 배경 */
-            --main-dark: #0a1f15; /* 완전 검은색이 아닌 아주 짙은 초록빛 먹색 */
-            --primary-ewha: #00462A; /* 이화그린 찐 컬러 (메인) */
-            --ewha-hover: #00331e; /* 호버 시 더 진해지는 그린 */
-            --ewha-medium: #2e6b52; /* 중간 톤의 그린 (보조 텍스트, 테두리용) */
-            --ewha-light-border: #a8c4b6; /* 연한 그린 테두리 */
-            --light-ewha: #e2ede7; /* 부드러운 그린 배경용 (뱃지, 박스 등) */
+            /* 🌿 Ewha Green Palette */
+            --bg-body: #f4f8f6; 
+            --main-dark: #0a1f15; 
+            --primary-ewha: #00462A; 
+            --ewha-hover: #00331e; 
+            --ewha-medium: #2e6b52; 
+            --ewha-light-border: #a8c4b6; 
+            --light-ewha: #e2ede7; 
             --card-bg: #ffffff;
             
             /* Clean Design Metrics */
@@ -40,14 +40,125 @@
             display: flex;
             justify-content: center;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
+        /* 🌟 스플래시(인트로) 애니메이션 - 완벽 통합 버전 */
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--bg-body);
+            z-index: 9999;
+            display: flex;
+            align-items: center; /* 세로 가운데 정렬 */
+            justify-content: center; /* 가로 가운데 정렬 */
+            animation: fadeOutSplash 3.2s cubic-bezier(0.8, 0, 0.2, 1) forwards;
+            pointer-events: none;
+        }
+
+        /* 📌 텍스트/이미지를 왼쪽 정렬로 묶어주는 래퍼 */
+        .splash-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* ⬅️ 핵심: 왼쪽 정렬 */
+            width: 100%;
+            max-width: 500px;
+            padding: 0 30px; /* 모바일 좌우 여백 */
+        }
+
+        .splash-img {
+            width: 240px;
+            height: 240px;
+            border-radius: 16px; 
+            box-shadow: 0 20px 40px rgba(0, 70, 42, 0.12);
+            object-fit: cover;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInImg 0.8s cubic-bezier(0.34, 1.3, 0.64, 1) 0.2s forwards;
+        }
+
+        .splash-tag {
+            color: var(--ewha-medium);
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 8px;
+            border-bottom: 2px solid var(--light-ewha);
+            opacity: 0;
+            animation: slideUpText 0.6s ease forwards 0.5s;
+        }
+
+        .splash-name {
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-size: 55px;
+            font-weight: 800;
+            color: var(--main-dark);
+            letter-spacing: -1px;
+            white-space: nowrap;
+            /* 왼 -> 오 마스크 효과 */
+            clip-path: inset(0 100% 0 0); 
+            transform: translateX(-15px); 
+            opacity: 0;
+            animation: revealTextLeftToRight 1s cubic-bezier(0.25, 1, 0.5, 1) 0.8s forwards;
+        }
+
+        .splash-affiliation {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-ewha);
+            margin-top: 5px;
+            opacity: 0;
+            animation: slideUpText 0.6s ease forwards 1.2s;
+        }
+
+        /* 모바일 스플래시 대응 */
+        @media (max-width: 768px) {
+            .splash-img {
+                width: 55vw;
+                height: 55vw;
+                border-radius: 12px;
+            }
+            .splash-name { font-size: 12vw; }
+            .splash-tag { font-size: 13px; }
+            .splash-affiliation { font-size: 14px; }
+        }
+
+        /* 스플래시 키프레임 */
+        @keyframes fadeInImg {
+            0% { transform: scale(0.96); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes revealTextLeftToRight {
+            0% { opacity: 0; transform: translateX(-15px); clip-path: inset(0 100% 0 0); }
+            40% { opacity: 1; }
+            100% { opacity: 1; transform: translateX(0); clip-path: inset(0 0 0 0); }
+        }
+        @keyframes slideUpText {
+            0% { opacity: 0; transform: translateY(15px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeOutSplash {
+            0% { opacity: 1; visibility: visible; }
+            85% { opacity: 1; visibility: visible; }
+            100% { opacity: 0; visibility: hidden; }
+        }
+        @keyframes revealMain {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+
+        /* ================= 기존 본문 스타일 ================= */
         .portfolio-wrapper {
             max-width: 900px;
             width: 100%;
+            opacity: 0;
+            /* 스플래시 끝난 후 등장 */
+            animation: revealMain 1s ease forwards 2.7s; 
         }
 
-        /* 1. SECTION COMPONENT */
         .section {
             background: var(--card-bg);
             border: 1px solid var(--ewha-light-border);
@@ -58,12 +169,8 @@
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .section:hover {
-            box-shadow: var(--box-shadow-hover);
-            border-color: var(--ewha-medium);
-        }
+        .section:hover { box-shadow: var(--box-shadow-hover); border-color: var(--ewha-medium); }
 
-        /* 2. HEADER COMPONENT */
         header {
             display: flex;
             align-items: center;
@@ -74,7 +181,6 @@
             box-shadow: none;
             margin-bottom: 20px;
             border-bottom: 2px solid var(--ewha-light-border);
-            animation: fadeInTop 0.8s ease forwards;
         }
 
         .profile-img-container { position: relative; flex-shrink: 0; }
@@ -88,9 +194,7 @@
             transition: border-color 0.3s ease;
         }
         
-        header:hover .profile-img {
-            border-color: var(--primary-ewha);
-        }
+        header:hover .profile-img { border-color: var(--primary-ewha); }
 
         .profile-info { flex-grow: 1; }
         .tag-major {
@@ -102,7 +206,6 @@
             border-bottom: 2px solid var(--light-ewha);
         }
 
-        /* 글씨 크기 키움 (44px -> 52px) */
         h1 {
             font-family: 'Cabinet Grotesk', sans-serif;
             font-size: 52px;
@@ -113,22 +216,11 @@
             color: var(--main-dark);
         }
 
-        .academic-info {
-            font-size: 16px;
-            color: #334155;
-            margin-bottom: 15px;
-        }
-
-        /* 소속 글씨 크기 키움 및 포인트 컬러 적용 */
+        .academic-info { font-size: 16px; color: #334155; margin-bottom: 15px; }
         .academic-info .affiliation { font-size: 18px; font-weight: 700; color: var(--primary-ewha); }
         .academic-info .advisor { font-size: 15px; color: var(--ewha-medium); font-weight: 500; }
 
-        .contact-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 15px;
-        }
+        .contact-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 15px; }
         
         .btn {
             display: inline-flex;
@@ -151,8 +243,6 @@
             transform: translateY(-2px);
         }
 
-        /* 3. TYPOGRAPHY & LAYOUT */
-        /* 글씨 크기 키움 (24px -> 28px) */
         h2 {
             font-size: 28px;
             font-weight: 800;
@@ -163,7 +253,6 @@
             color: var(--main-dark);
             position: relative;
         }
-        
         h2::after {
             content: '';
             position: absolute;
@@ -175,7 +264,6 @@
         }
 
         .poster-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
-        
         .poster-card {
             background: #fff;
             border: 1px solid var(--ewha-light-border);
@@ -183,11 +271,7 @@
             padding: 30px;
             transition: box-shadow 0.3s ease, border-color 0.3s ease;
         }
-        
-        .poster-card:hover {
-            box-shadow: var(--box-shadow-hover);
-            border-color: var(--ewha-medium);
-        }
+        .poster-card:hover { box-shadow: var(--box-shadow-hover); border-color: var(--ewha-medium); }
 
         .badge-container { display: flex; gap: 8px; margin-bottom: 15px; }
         .badge {
@@ -200,7 +284,6 @@
             border-radius: 4px;
         }
 
-        /* 타이틀 글씨 크기 키움 (20px -> 22px) */
         .poster-title { font-size: 22px; font-weight: 700; margin-bottom: 10px; color: var(--main-dark); line-height: 1.4; }
         .poster-authors { font-size: 16px; color: var(--ewha-medium); margin-bottom: 15px; font-weight: 500; }
         .poster-authors strong { color: var(--primary-ewha); font-weight: 700; }
@@ -208,7 +291,7 @@
         .poster-abstract {
             font-size: 15px;
             color: #475569;
-            background: var(--bg-body); /* 연한 그린 배경 */
+            background: var(--bg-body);
             padding: 20px;
             border-radius: 6px;
             border: 1px solid var(--ewha-light-border);
@@ -229,7 +312,6 @@
         .pub-item { padding: 0 0 25px 0; margin-bottom: 25px; border-bottom: 1px solid var(--ewha-light-border); }
         .pub-item:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
         
-        /* 타이틀 글씨 크기 키움 (18px -> 20px) */
         .pub-title { font-size: 20px; font-weight: 700; color: var(--main-dark); margin-bottom: 10px; line-height: 1.4; }
         .pub-authors { font-size: 16px; color: #475569; margin-bottom: 8px; }
         .pub-journal { font-size: 15px; color: var(--primary-ewha); font-weight: 700; margin-bottom: 8px; }
@@ -250,7 +332,6 @@
             padding-top: 2px;
         }
         
-        /* 타이틀 글씨 크기 키움 (16px -> 18px) */
         .timeline-title { font-size: 18px; font-weight: 700; margin-bottom: 5px; color: var(--main-dark); }
         .timeline-sub { font-size: 15px; color: #475569; margin-bottom: 5px; }
         .timeline-project { 
@@ -276,10 +357,8 @@
             transition: all 0.2s ease;
         }
         .tag-interest:hover { 
-            border-color: var(--primary-ewha); 
-            color: var(--primary-ewha); 
-            background-color: var(--light-ewha); 
-            transform: translateY(-2px);
+            border-color: var(--primary-ewha); color: var(--primary-ewha); 
+            background-color: var(--light-ewha); transform: translateY(-2px);
         }
 
         @media (max-width: 768px) {
@@ -290,132 +369,20 @@
             .badge-container { justify-content: center; }
             .section { padding: 30px 20px; }
         }
-
-        /* 🌟 FadeIn 애니메이션 */
-        @keyframes fadeInTop {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInBottom {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* 🌟 스플래시(인트로) 애니메이션 - 수정 버전 */
-        .splash-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: var(--bg-body);
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            animation: fadeOutSplash 2.6s cubic-bezier(0.8, 0, 0.2, 1) forwards;
-            pointer-events: none;
-        }
-
-        .splash-img {
-            width: 240px;
-            height: 240px;
-            border-radius: 16px; /* 모서리를 부드럽게 두어 트렌디한 느낌 */
-            border: none; /* 피드백 반영: 테두리 제거 */
-            box-shadow: 0 20px 40px rgba(0, 70, 42, 0.12); /* 이화그린 톤의 은은하고 깊은 그림자 */
-            object-fit: cover;
-            margin-bottom: 30px;
-            opacity: 0;
-            /* 부드럽게 선명해지며 등장 */
-            animation: fadeInImg 0.9s cubic-bezier(0.34, 1.3, 0.64, 1) 0.2s forwards;
-        }
-
-        .splash-name {
-            font-family: 'Cabinet Grotesk', sans-serif;
-            font-size: 55px;
-            font-weight: 800;
-            color: var(--main-dark);
-            letter-spacing: -1px;
-            white-space: nowrap;
-            
-            /* 피드백 반영: 왼 -> 오로 생겨나는 효과를 위한 마스크 설정 */
-            clip-path: inset(0 100% 0 0); 
-            transform: translateX(-15px); /* 약간 왼쪽에서 시작 */
-            opacity: 0;
-            animation: revealTextLeftToRight 1.2s cubic-bezier(0.25, 1, 0.5, 1) 0.6s forwards;
-        }
-
-        /* 모바일 환경 대응 */
-        @media (max-width: 768px) {
-            .splash-img {
-                width: 55vw;
-                height: 55vw;
-                border-radius: 12px;
-            }
-            .splash-name {
-                font-size: 12vw;
-            }
-        }
-
-        /* 본문 지연 등장 (인트로가 끝날 때 흐름 연결) */
-        .portfolio-wrapper {
-            max-width: 900px;
-            width: 100%;
-            opacity: 0;
-            animation: revealMain 1s ease forwards 2.2s; 
-        }
-
-        /* 🌟 애니메이션 키프레임 */
-        @keyframes fadeInImg {
-            0% { transform: scale(0.96); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        /* 왼 -> 오 슬라이드 와이프 효과 */
-        @keyframes revealTextLeftToRight {
-            0% {
-                opacity: 0;
-                transform: translateX(-15px);
-                clip-path: inset(0 100% 0 0); /* 오른쪽을 100% 가림 */
-            }
-            40% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(0);
-                clip-path: inset(0 0 0 0); /* 완전히 다 보임 */
-            }
-        }
-
-        @keyframes fadeOutSplash {
-            0% { opacity: 1; visibility: visible; }
-            85% { opacity: 1; visibility: visible; }
-            100% { opacity: 0; visibility: hidden; }
-        }
-
-        @keyframes revealMain {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
     </style>
 </head>
 <body>
-<!-- 📌 이 부분을 꼭 추가해 주세요! -->
+
+<!-- 📌 수정된 스플래시 인트로 화면 (왼쪽 정렬 & 소속 추가) -->
 <div class="splash-screen">
-    <img src="vic1.jpg" alt="SeungRi Choo" class="splash-img" onerror="this.style.display='none';">
-    <h1 class="splash-name">SeungRi Choo</h1>
+    <div class="splash-content">
+        <img src="vic1.jpg" alt="SeungRi Choo" class="splash-img" onerror="this.style.display='none';">
+        <span class="splash-tag">Educational Measurement and Evaluation</span>
+        <h1 class="splash-name">SeungRi Choo</h1>
+        <p class="splash-affiliation">M.A. Student in Education, Ewha Womans University</p>
+    </div>
 </div>
-<!-- 📌 여기까지 -->
 
-<div class="portfolio-wrapper">
-
-    <header>
-        <div class="profile-img-container">
-            <img src="vic1.jpg" alt="SeungRi Choo" class="profile-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <div style="display:none; width:170px; height:170px; border-radius:6px; border:3px solid var(--light-ewha); background:var(--light-ewha); align-items:center; justify-content:center; font-weight:700; color:var(--primary-ewha); text-align:center; padding:10px;">vic1.jpg</div>
-        </div>
 <div class="portfolio-wrapper">
 
     <header>
@@ -424,7 +391,7 @@
             <div style="display:none; width:170px; height:170px; border-radius:6px; border:3px solid var(--light-ewha); background:var(--light-ewha); align-items:center; justify-content:center; font-weight:700; color:var(--primary-ewha); text-align:center; padding:10px;">vic1.jpg</div>
         </div>
         <div class="profile-info">
-            <span class="tag-major">Educational Measurement and Evaluation </span>
+            <span class="tag-major">Educational Measurement and Evaluation</span>
             <h1>SeungRi Choo</h1>
             <div class="academic-info">
                 <p class="affiliation">M.A. Student in Education, Ewha Womans University</p>
@@ -439,7 +406,7 @@
         </div>
     </header>
 
-    <div class="section" style="animation: fadeInBottom 1s ease 0.1s forwards; opacity: 0;">
+    <div class="section">
         <h2>Research Interests</h2>
         <div class="research-tags">
             <span class="tag-interest">Teacher Burnout and Efficacy</span>
@@ -448,7 +415,7 @@
         </div>
     </div>
 
-    <div class="section" style="animation: fadeInBottom 1s ease 0.2s forwards; opacity: 0;">
+    <div class="section">
         <h2>Conference Presentations (Upcoming)</h2>
         <div class="poster-grid">
             <div class="poster-card">
@@ -476,7 +443,7 @@
         </div>
     </div>
 
-    <div class="section" style="animation: fadeInBottom 1s ease 0.3s forwards; opacity: 0;">
+    <div class="section">
         <h2>Publications (Peer-Reviewed Journal Articles)</h2>
         <div class="pub-item">
             <div class="pub-title">A Study on the Competency and Needs of Teachers for the Operation of the High School Credit System: Focusing on High Schools in Chungcheongnam Province</div>
@@ -486,7 +453,7 @@
         </div>
     </div>
 
-    <div class="section" style="animation: fadeInBottom 1s ease 0.4s forwards; opacity: 0;">
+    <div class="section">
         <h2>Experience</h2>
         
         <h3 class="experience-type">Research Experience</h3>
